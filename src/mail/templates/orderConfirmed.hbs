@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Order Confirmed - ShopEase</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f5f7fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .wrapper {
+      width: 100%;
+      padding: 30px 15px;
+    }
+    .container {
+      max-width: 600px;
+      background: #ffffff;
+      margin: 0 auto;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+    .header {
+      background: linear-gradient(135deg, #10b981, #059669);
+      padding: 40px 30px;
+      text-align: center;
+      color: #ffffff;
+    }
+    .header h1 {
+      margin: 0 0 10px 0;
+      font-size: 32px;
+      font-weight: 700;
+    }
+    .header p {
+      margin: 0;
+      font-size: 16px;
+      opacity: 0.95;
+    }
+    .content {
+      padding: 40px 30px;
+    }
+    .content h2 {
+      color: #111827;
+      margin: 0 0 15px 0;
+      font-size: 24px;
+    }
+    .text {
+      color: #4b5563;
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .success-box {
+      background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+      border: 2px solid #10b981;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 25px 0;
+      text-align: center;
+    }
+    .success-icon {
+      font-size: 60px;
+      margin-bottom: 15px;
+    }
+    .success-box h3 {
+      color: #065f46;
+      margin: 0 0 10px 0;
+      font-size: 22px;
+    }
+    .success-box p {
+      color: #047857;
+      margin: 0;
+      font-size: 16px;
+    }
+    .footer {
+      background: #f9fafb;
+      text-align: center;
+      padding: 25px 20px;
+      font-size: 13px;
+      color: #9ca3af;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      
+      <div class="header">
+        <h1>🎉 Order Confirmed!</h1>
+        <p>Your order is on its way</p>
+      </div>
+
+      <div class="content">
+        <h2>Hello {{customerName}},</h2>
+        
+        <div class="success-box">
+          <div class="success-icon">✓</div>
+          <h3>Your Order Has Been Confirmed</h3>
+          <p>It will be delivered in 2-3 days</p>
+        </div>
+
+        <p class="text">
+          Great news! Your order has been confirmed and will be delivered to you within 2-3 business days.
+        </p>
+
+        <p class="text" style="margin-bottom: 0;">
+          Thank you for shopping with ShopEase!<br/>
+          <strong style="color: #10b981;">The ShopEase Team</strong>
+        </p>
+      </div>
+
+      <div class="footer">
+        © 2026 ShopEase. All rights reserved.
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

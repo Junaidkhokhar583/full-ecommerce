@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Order Cancelled - ShopEase</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f5f7fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .wrapper {
+      width: 100%;
+      padding: 30px 15px;
+    }
+    .container {
+      max-width: 600px;
+      background: #ffffff;
+      margin: 0 auto;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+    .header {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      padding: 40px 30px;
+      text-align: center;
+      color: #ffffff;
+    }
+    .header h1 {
+      margin: 0 0 10px 0;
+      font-size: 32px;
+      font-weight: 700;
+    }
+    .header p {
+      margin: 0;
+      font-size: 16px;
+      opacity: 0.95;
+    }
+    .content {
+      padding: 40px 30px;
+    }
+    .content h2 {
+      color: #111827;
+      margin: 0 0 15px 0;
+      font-size: 24px;
+    }
+    .text {
+      color: #4b5563;
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .alert-box {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      border: 2px solid #ef4444;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 25px 0;
+      text-align: center;
+    }
+    .alert-icon {
+      font-size: 60px;
+      margin-bottom: 15px;
+    }
+    .alert-box h3 {
+      color: #991b1b;
+      margin: 0 0 10px 0;
+      font-size: 22px;
+    }
+    .alert-box p {
+      color: #b91c1c;
+      margin: 0;
+      font-size: 16px;
+    }
+    .footer {
+      background: #f9fafb;
+      text-align: center;
+      padding: 25px 20px;
+      font-size: 13px;
+      color: #9ca3af;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      
+      <div class="header">
+        <h1>Order Cancelled</h1>
+        <p>We're sorry about this</p>
+      </div>
+
+      <div class="content">
+        <h2>Hello {{customerName}},</h2>
+        
+        <div class="alert-box">
+          <div class="alert-icon">❌</div>
+          <h3>Your Order Has Been Cancelled</h3>
+          <p>We apologize for the inconvenience</p>
+        </div>
+
+        <p class="text">
+          We're sorry to inform you that your order has been cancelled. We apologize for any inconvenience this may have caused.
+        </p>
+
+        <p class="text" style="margin-bottom: 0;">
+          We hope to serve you better next time,<br/>
+          <strong style="color: #ef4444;">The ShopEase Team</strong>
+        </p>
+      </div>
+
+      <div class="footer">
+        © 2026 ShopEase. All rights reserved.
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

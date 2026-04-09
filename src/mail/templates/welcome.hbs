@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Welcome to ShopEase</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f5f7fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .wrapper {
+      width: 100%;
+      padding: 30px 15px;
+    }
+    .container {
+      max-width: 600px;
+      background: #ffffff;
+      margin: 0 auto;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+    .header {
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      padding: 40px 30px;
+      text-align: center;
+      color: #ffffff;
+      position: relative;
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #fbbf24, #f59e0b, #fbbf24);
+    }
+    .header h1 {
+      margin: 0 0 10px 0;
+      font-size: 32px;
+      font-weight: 700;
+    }
+    .header p {
+      margin: 0;
+      font-size: 16px;
+      opacity: 0.95;
+    }
+    .welcome-badge {
+      background: rgba(255,255,255,0.2);
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 20px;
+      margin-top: 15px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .content {
+      padding: 40px 30px;
+    }
+    .content h2 {
+      color: #111827;
+      margin: 0 0 15px 0;
+      font-size: 24px;
+    }
+    .text {
+      color: #4b5563;
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .highlight {
+      color: #2563eb;
+      font-weight: 600;
+    }
+    .features {
+      margin: 30px 0;
+    }
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #f9fafb;
+      border-radius: 10px;
+      transition: transform 0.2s;
+    }
+    .feature-item:hover {
+      transform: translateX(5px);
+      background: #f3f4f6;
+    }
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    .feature-text h3 {
+      margin: 0 0 5px 0;
+      color: #111827;
+      font-size: 16px;
+    }
+    .feature-text p {
+      margin: 0;
+      color: #6b7280;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .cta-section {
+      text-align: center;
+      margin: 30px 0;
+      padding: 25px;
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      border-radius: 12px;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+      transition: all 0.3s;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    }
+    .promo-banner {
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 10px;
+    }
+    .promo-banner h3 {
+      margin: 0 0 8px 0;
+      font-size: 20px;
+    }
+    .promo-banner p {
+      margin: 0;
+      font-size: 14px;
+    }
+    .promo-code {
+      display: inline-block;
+      background: rgba(255,255,255,0.3);
+      padding: 8px 16px;
+      border-radius: 6px;
+      margin-top: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      border: 2px dashed rgba(255,255,255,0.6);
+    }
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+      margin: 30px 0;
+    }
+    .social-links {
+      text-align: center;
+      margin: 25px 0;
+    }
+    .social-links a {
+      display: inline-block;
+      margin: 0 10px;
+      color: #6b7280;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .social-links a:hover {
+      color: #2563eb;
+    }
+    .footer {
+      background: #f9fafb;
+      text-align: center;
+      padding: 25px 20px;
+      font-size: 13px;
+      color: #9ca3af;
+      line-height: 1.6;
+    }
+    .footer a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    @media only screen and (max-width: 600px) {
+      .content {
+        padding: 30px 20px;
+      }
+      .header h1 {
+        font-size: 26px;
+      }
+      .btn {
+        padding: 12px 24px;
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+
+      <!-- Header -->
+      <div class="header">
+        <h1>🎉 Welcome to ShopEase!</h1>
+        <p>Your smart online shopping destination</p>
+        <div class="welcome-badge">✨ New Member</div>
+      </div>
+
+      <!-- Content -->
+      <div class="content">
+        <h2>Hello {{name}},</h2>
+        
+        <p class="text">
+          We're thrilled to have you join the <span class="highlight">ShopEase family</span>! 
+          You've just unlocked access to thousands of products, exclusive deals, and a shopping 
+          experience designed with you in mind.
+        </p>
+
+        <p class="text">
+          Your journey to smarter shopping starts now. Whether you're looking for the latest trends, 
+          everyday essentials, or special gifts, we've got you covered with unbeatable prices and 
+          lightning-fast delivery.
+        </p>
+
+
+        <!-- Features -->
+
+
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+          <h3 style="margin: 0 0 10px 0; color: #111827;">Ready to Start Shopping?</h3>
+          <p style="margin: 0 0 15px 0; color: #4b5563;">
+            Browse our newest arrivals and trending products today!
+          </p>
+          <a href="#" class="btn">Start Shopping Now →</a>
+        </div>
+
+        <p class="text" style="margin-top: 30px;">
+          Need help getting started? Our friendly customer support team is available 24/7 to assist you. 
+          Simply reply to this email or visit our <a href="#" style="color: #2563eb; text-decoration: none;">Help Center</a>.
+        </p>
+
+        <p class="text" style="margin-bottom: 0;">
+          Happy shopping!<br/>
+          <strong style="color: #2563eb;">The ShopEase Team</strong>
+        </p>
+      </div>
+
+      <!-- Social Links -->
+      <div class="social-links">
+        <a href="#">Facebook</a> • 
+        <a href="#">Instagram</a> • 
+        <a href="#">Twitter</a> • 
+        <a href="#">Pinterest</a>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        © 2026 ShopEase. All rights reserved.<br/>
+        Made with ❤️ for a better shopping experience.<br/><br/>
+        <a href="#">Unsubscribe</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a><br/>
+        123 Commerce Street, Shopping District, Your City, 12345
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

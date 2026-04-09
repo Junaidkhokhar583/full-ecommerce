@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  dev_Ecommerce:
+    image: postgres:15
+    container_name: e_commerce
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: e_commerce
+    ports:
+      - '5432:5432'
+    networks:
+      - commerceCamp
+
+networks:
+  commerceCamp:
