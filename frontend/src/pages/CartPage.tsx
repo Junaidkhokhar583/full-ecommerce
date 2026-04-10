@@ -19,7 +19,6 @@ export function CartPage() {
     queryKey: ['cart'],
     queryFn: async () => {
       const res = await api.get('/cart/')
-      // backend returns an array of { productId, name, price, quantity, total }
       return res.data as CartItem[]
     },
   })

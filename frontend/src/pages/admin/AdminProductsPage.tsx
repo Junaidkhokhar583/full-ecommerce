@@ -26,6 +26,8 @@ export function AdminProductsPage() {
   const [isActive, setIsActive] = useState(true)
   const [files, setFiles] = useState<FileList | null>(null)
 
+  const [editingProduct, setEditingProduct] = useState<Product | null>(null)
+
   const productsQ = useQuery({
     queryKey: ['admin-products', page, limit],
     queryFn: async () => {
@@ -58,6 +60,40 @@ export function AdminProductsPage() {
     },
   })
 
+  const updateM = useMutation({
+    mutationFn: async () => {
+      if (!editingProduct) return
+
+      const fd = new FormData()
+      const payload = { name, description, price, stockQuantity, category, isActive }
+
+      fd.append('data', JSON.stringify(payload))
+      const list = files ? Array.from(files).slice(0, 6) : []
+      list.forEach((f) => fd.append('files', f))
+
+      await api.patch(`/product/admin/product/${editingProduct.id}`, {
+  name,
+  description,
+  price,
+  stockQuantity,
+  category,
+  isActive
+})
+    },
+    onSuccess: async () => {
+      setEditingProduct(null)
+      setName('')
+      setDescription('')
+      setPrice(0)
+      setStockQuantity(0)
+      setCategory('')
+      setIsActive(true)
+      setFiles(null)
+
+      await qc.invalidateQueries({ queryKey: ['admin-products'] })
+    },
+  })
+
   const deleteM = useMutation({
     mutationFn: async (productId: number) => {
       await api.delete(`/product/admin/product/${productId}`)
@@ -68,7 +104,21 @@ export function AdminProductsPage() {
   })
 
   const products = productsQ.data ?? []
-  const canSubmit = useMemo(() => name.trim() && description.trim() && category.trim(), [name, description, category])
+
+  const canSubmit = useMemo(
+    () => name.trim() && description.trim() && category.trim(),
+    [name, description, category]
+  )
+
+  const startEdit = (p: Product) => {
+    setEditingProduct(p)
+    setName(p.name)
+    setDescription(p.description)
+    setPrice(p.price)
+    setStockQuantity(p.stockQuantity)
+    setCategory(p.category)
+    setIsActive(p.isActive)
+  }
 
   return (
     <div className="space-y-4">
@@ -127,16 +177,45 @@ export function AdminProductsPage() {
           </div>
 
           {createM.isError ? <div className="sm:col-span-2 text-sm text-red-300">{getErrorMessage(createM.error)}</div> : null}
+          {updateM.isError ? <div className="sm:col-span-2 text-sm text-red-300">{getErrorMessage(updateM.error)}</div> : null}
 
-          <div className="sm:col-span-2">
+          <div className="sm:col-span-2 space-y-2">
             <Button
               variant="primary"
-              disabled={createM.isPending || !canSubmit}
-              onClick={() => createM.mutate()}
+              disabled={(createM.isPending || updateM.isPending) || !canSubmit}
+              onClick={() => {
+                if (editingProduct) updateM.mutate()
+                else createM.mutate()
+              }}
               className="w-full"
             >
-              {createM.isPending ? 'Creating…' : 'Create product'}
+              {editingProduct
+                ? updateM.isPending
+                  ? 'Updating…'
+                  : 'Update product'
+                : createM.isPending
+                ? 'Creating…'
+                : 'Create product'}
             </Button>
+
+            {editingProduct && (
+              <Button
+                variant="secondary"
+                onClick={() => {
+                  setEditingProduct(null)
+                  setName('')
+                  setDescription('')
+                  setPrice(0)
+                  setStockQuantity(0)
+                  setCategory('')
+                  setIsActive(true)
+                  setFiles(null)
+                }}
+                className="w-full"
+              >
+                Cancel Edit
+              </Button>
+            )}
           </div>
         </div>
       </Card>
@@ -157,9 +236,18 @@ export function AdminProductsPage() {
                   {p.isActive ? 'Active' : 'Inactive'}
                 </div>
               </div>
-              <Button variant="danger" onClick={() => deleteM.mutate(p.id)} disabled={deleteM.isPending}>
-                Delete
-              </Button>
+
+              <div className="flex gap-2">
+                <Button onClick={() => startEdit(p)}>Edit</Button>
+
+                <Button
+                  variant="danger"
+                  onClick={() => deleteM.mutate(p.id)}
+                  disabled={deleteM.isPending}
+                >
+                  Delete
+                </Button>
+              </div>
             </div>
           </Card>
         ))}
@@ -167,4 +255,3 @@ export function AdminProductsPage() {
     </div>
   )
 }
-

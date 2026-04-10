@@ -54,7 +54,7 @@ export function ProductsPage() {
             onChange={(e) => setSearch(e.target.value)}
             className="sm:w-64"
           />
-          <Button onClick={() => refetch()}>Search</Button>
+          <Button className='cursor-pointer' onClick={() => refetch()}>Search</Button>
         </div>
       </div>
 
@@ -90,11 +90,11 @@ export function ProductsPage() {
 
       {!search.trim() ? (
         <div className="flex items-center justify-between">
-          <Button disabled={page <= 1} onClick={() => setPage((p) => Math.max(1, p - 1))}>
+          <Button className='cursor-pointer' disabled={page <= 1} onClick={() => setPage((p) => Math.max(1, p - 1))}>
             Prev
           </Button>
           <div className="text-sm text-zinc-400">Page {page}</div>
-          <Button onClick={() => setPage((p) => p + 1)}>Next</Button>
+          <Button className='cursor-pointer' onClick={() => setPage((p) => p + 1)}>Next</Button>
         </div>
       ) : null}
     </div>

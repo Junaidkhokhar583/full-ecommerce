@@ -151,7 +151,7 @@ function App() {
                 <div className="flex flex-wrap items-center gap-3 pt-1">
                   <button
                     type="button"
-                    className="inline-flex items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200 motion-reduce:transition-none"
+                    className="inline-flex cursor-pointer items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200 motion-reduce:transition-none"
                     onClick={() => {
                       const el = document.getElementById('products-section')
                       if (!el) return
